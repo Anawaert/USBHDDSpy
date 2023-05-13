@@ -58,3 +58,8 @@ USBHDDSpy.csproj.user  // CSharp工程文件用户配置文件
 
 
 USBHDDSpy.sln  // Visual Studio工程解决方案文件
+
+###################################################################################
+使用方法：下载本工程目录压缩包，解压后单击USBHDDSpy.sln即可打开本工程。环境需求：Visual Studio 2022, .NET SDK 6或更高
+How to view the code: Download this project zip file, and click USBHDDSpy.sln file after extracted the zip file. 
+Envrionment requirement: Visual Studio 2022, .NET SDK 6 or higher version.
