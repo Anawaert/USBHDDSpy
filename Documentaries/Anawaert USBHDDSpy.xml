@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Anawaert USBHDDSpy</name>
+    </assembly>
+    <members>
+        <member name="T:additionalAttributes.DiskRecognitionRelated">
+            <summary>
+            用于读取USB可移动磁盘设备的硬件标识符的类
+            </summary>
+        </member>
+        <member name="M:additionalAttributes.DiskRecognitionRelated.GetVolumeInformationW(System.String,System.IntPtr,System.Int32,System.UInt32@,System.UInt32@,System.UInt32@,System.IntPtr,System.Int32)">
+            <summary>
+            由DLLImportAttribute特性导入的外部DLL函数GetVolumeInformationW，用以读出U盘硬件标识符
+            </summary>
+            <param name="rootPathName">设备的根路径名，即驱动器号</param>
+            <param name="volumeNameBuffer">卷名称缓冲区指针</param>
+            <param name="volumeNameSize">卷名称缓冲区大小</param>
+            <param name="volumeSerialNumber">卷序列号，正是我们需要的</param>
+            <param name="maxiumComponentLength">最大文件名长度</param>
+            <param name="fileSystemFlags">文件系统标志</param>
+            <param name="fileSystemNameBuffer">文件系统名称缓冲区指针</param>
+            <param name="nFileSystemNameSize">文件系统名称缓冲区大小</param>
+            <returns>返回值为boolean，如果执行成功就返回ture，反之false</returns>
+        </member>
+        <member name="M:additionalAttributes.DiskRecognitionRelated.GET_USBHDD_ID(System.String,System.UInt32@)">
+            <summary>
+            用以获取指定驱动器的硬件标识符
+            </summary>
+            <param name="driveName">驱动器名称</param>
+            <param name="UINT_DISK_ID">外传的参数，无符号整型的驱动器硬件标识符</param>
+        </member>
+        <member name="M:additionalAttributes.DiskRecognitionRelated.IsDiskRegistered(System.String,System.String)">
+            <summary>
+            检测U盘是否已经被注册
+            </summary>
+            <param name="DiskIDString">已注册的驱动器ID字符串，它应该来自USBHDD命名空间下的MainConsole类</param>
+            <returns>返回值为布尔类型，指示是否登记注册过该驱动器为受信任的驱动器</returns>
+        </member>
+        <member name="T:additionalAttributes.UpdateCheck">
+            <summary>
+            用于检测程序更新信息的类
+            </summary>
+        </member>
+        <member name="M:additionalAttributes.UpdateCheck.CheckGitHub">
+            <summary>
+            这是一个用于检测应用程序是否需要更新的函数。依托GitHub的网页页面及可更改读取信息，使用读取页面HTML字节码的方式
+            并与程序内硬编码版本对比来判断是否有版本更新
+            </summary>
+        </member>
+        <member name="T:USBHDDSpy.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:USBHDDSpy.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:USBHDDSpy.Properties.Resources.Culture">
+            <summary>
+              重写当前线程的 CurrentUICulture 属性，对
+              使用此强类型资源类的所有资源查找执行重写。
+            </summary>
+        </member>
+        <member name="P:USBHDDSpy.Properties.Resources.USBHDDSpyIcon">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.CreateLogFile(System.String)">
+            <summary>
+            用以创建新的符合初始状态的配置文件
+            (The function that used for creating a brand new cofiguration file that fits the original condition of the program)
+            </summary>
+            <param name="FolderPath">存放配置文件的文件夹的绝对路径 (The absolute path of the configuration file)</param>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.ReadLFAndApply(System.String)">
+            <summary>
+            用以读取已经存在的配置文件并且应用于UI界面
+            (The function that used for reading the existed configuration file and applying to UI interface according to the configuration file)
+            </summary>
+            <param name="FolderPath">>存放配置文件的文件夹的绝对路径 (The absolute path of the configuration file)</param>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.SetToTheLF(System.String)">
+            <summary>
+            用以将用户界面的修改应用于配置文件当中
+            (The function that used for saving users' changes and converting the content of configuration file at the same time)
+            </summary>
+            <param name="FloderPath">存放配置文件的文件夹的绝对路径 (The absolute path of the configuration file)</param>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.StartWithStartup">
+            <summary>
+            用于写入注册表以实现开机自启的函数
+            The function that used for reading/writing Registry to start program while system's starting up
+            </summary>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.NotStartWithStartUp">
+            <summary>
+            用于写入注册表以取消开机自启的函数
+            The function that used for reading/writing Registry to cancle to start the program while system's starting up
+            </summary>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.ActionTimer_Tick(System.Object,System.EventArgs)">
+            <summary>
+            用于处理文件自动复制到指定文件夹的函数，集成于ActionTimer的Tick事件引发函数中
+            (The function that used for copying files form USB devices towards the specific folder automatically.
+            It's also the function of ActionTimer triggered by "Tick" event)
+            </summary>
+            <param name="sender">ActionTimer对象</param>
+            <param name="e">事件数据 (Event data)</param>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.IsOneUSBHDD">
+            <summary>
+            用于判断是否插入的U盘数量为1个
+            (The function that used for detecting that only one USB device was pluged in the computer)
+            </summary>
+            <returns>布尔值，真即为1个，假即为0或多个 (The boolean value, true means the single one and false means zero or more than one devices)</returns>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.CertainFormatsToArray(System.String)">
+            <summary>
+            用以将保存在配置文件中的以逗号分隔的“特定格式”转化为后缀名的正确格式
+            (The function that can make the specific file formats saved in local configuration file convert to
+            right string format that program can deal with)
+            </summary>
+            <param name="certainFmtString">以逗号(',')分隔的“特定格式”字符串 (The string variable splited by character ( ',') stored in local configuration file)</param>
+            <returns>string[]，里面包含着所有文件格式名 (string[], including all the file formats that users inputed)</returns>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.RecognitionLabel_Click(System.Object,System.EventArgs)">
+            <summary>
+            用于处理将USB设备注册为受信任的U盘的函数，与该Label的点击事件集成在一起
+            (The function used for dealing with registering a USB device in order to make it reliable and
+            the program will not copy anything from it.
+            This function is also the function triggered by the "Click" event of RecognitionLabel)
+            </summary>
+            <param name="sender">发送者 (sender)</param>
+            <param name="e">事件数据 (EventArgs)</param>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.GenerateTargetName(System.String)">
+            <summary>
+            用以提取U盘单个文件的具体名称以用于复制到目标文件夹时文件副本的命名
+            The function that is used for extracting the original file name in order to
+            make the copies of files in local folder have the same name.
+            </summary>
+            <param name="Source">原来的路径名称 The origial complete path of a file</param>
+            <returns></returns>
+        </member>
+        <member name="F:USBHDDSpy.MainConsole.components">
+            <summary>
+             Required designer variable.
+            </summary>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.Dispose(System.Boolean)">
+            <summary>
+             Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:USBHDDSpy.MainConsole.InitializeComponent">
+            <summary>
+             Required method for Designer support - do not modify
+             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:USBHDDSpy.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="F:USBHDDSpy.ProgramInfo.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:USBHDDSpy.ProgramInfo.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:USBHDDSpy.ProgramInfo.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:USBHDDSpy.ApplicationConfiguration">
+            <summary>
+             Bootstrap the application configuration.
+            </summary>
+        </member>
+        <member name="M:USBHDDSpy.ApplicationConfiguration.Initialize">
+            <summary>
+             Bootstrap the application as follows:
+             <code>
+             global::System.Windows.Forms.Application.EnableVisualStyles();
+             global::System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
+             global::System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            </code>
+            </summary>
+        </member>
+    </members>
+</doc>

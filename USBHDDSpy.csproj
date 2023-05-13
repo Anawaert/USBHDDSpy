@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Anawaert USBHDDSpy</AssemblyName>
+    <ApplicationIcon>imageSource\USBHDDSpyIcon.ico</ApplicationIcon>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <SignAssembly>False</SignAssembly>
+    <Title>一个用以将USB可移动磁盘中特定文件拷出的小型间谍软件</Title>
+    <Version>1.0.5.1</Version>
+    <Authors>Anawaert Studio</Authors>
+    <Company>Anawaert Studio</Company>
+    <Description>一个用以将USB可移动磁盘中特定文件拷出的小型间谍软件（请勿用于非法用途！）</Description>
+    <Copyright>Copyright (C) 2017-2023 Anawaert Studio</Copyright>
+    <PackageProjectUrl>https://github.com/Anawaert/USBHDDSpy</PackageProjectUrl>
+    <PackageIcon>USBHDDSpyIcon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Anawaert/USBHDDSpy</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>一个用以将USB可移动磁盘中特定文件拷出的小型间谍软件，已开源发布至https://github.com/Anawaert/USBHDDSpy
+（请勿用于非法用途！）</PackageReleaseNotes>
+    <NeutralLanguage>zh</NeutralLanguage>
+    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <PackageId>Anawaert USBHDDSpy</PackageId>
+    <Product>$(AssemblyName)</Product>
+    <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="imageSource\USBHDDSpyIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="imageSource\USBHDDSpyIcon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
